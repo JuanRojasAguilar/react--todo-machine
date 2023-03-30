@@ -1,22 +1,19 @@
 import React from "react";
+import Styles from "./TodoSearch.module.css";
 
-import { TodoContext } from "../TodoContext";
-import Styles from './TodoSearch.module.css';
+export function TodoSearch({ searchValue, setSearchValue, loading }) {
+  const onSearchValueChange = (event) => {
+    console.log(event.target.value);
+    setSearchValue(event.target.value);
+  };
 
-export function TodoSearch() {
-    const { searchValue, setSearchValue } = React.useContext(TodoContext);
-
-    const onSearchValueChange = (event) => {
-        console.log(event.target.value);
-        setSearchValue(event.target.value);
-    };
-
-    return (
-        <input
-            placeholder="Cebolla"
-            className={Styles.TodoSearch}
-            value={searchValue}
-            onChange={onSearchValueChange}
-        />
-    );
+  return (
+    <input
+      placeholder="Cebolla"
+      className={Styles.TodoSearch}
+      value={searchValue}
+      onChange={onSearchValueChange}
+      disabled={loading}
+    />
+  );
 }
