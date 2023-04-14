@@ -4,12 +4,10 @@ import "./TodoForm.css";
 export function TodoForm({ addTodo, setOpenModal }) {
   const [newTodoValue, setNewTodoValue] = React.useState("");
 
-  const onCancel = () => {
-    setOpenModal(false);
-  };
+  const onCancel = () => setOpenModal(false);
 
-  const onChange = (event) => {
-    setNewTodoValue(event.target.value);
+  const onChange = ({ target: value }) => {
+    setNewTodoValue(value);
   };
 
   const onSubmit = (event) => {
@@ -34,7 +32,10 @@ export function TodoForm({ addTodo, setOpenModal }) {
         >
           Cancelar
         </button>
-        <button className="TodoForm-button TodoForm-button-add" type="submit">
+        <button
+          className="TodoForm-button TodoForm-button-add"
+          type="submit"
+        >
           Añadir
         </button>
       </div>
